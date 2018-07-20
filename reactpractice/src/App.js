@@ -50,15 +50,6 @@ togglePersonsHandler = () => {
 
   render() {
 
-    const style = {
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer',
-    
-    };
 
     let persons = null;
 
@@ -75,7 +66,6 @@ togglePersonsHandler = () => {
           })}
        </div> 
       );
-      style.backgroundColor = 'red';
      
     }
 
@@ -94,7 +84,6 @@ togglePersonsHandler = () => {
         <h1> Hi, im a new react app </h1>
         <p className={assignedClasses.join(' ')} > this is realy working</p>
         <button
-        style={style} 
         onClick={this.togglePersonsHandler}>Switch Name</button>
         {persons}
         </div>
