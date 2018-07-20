@@ -52,6 +52,7 @@ togglePersonsHandler = () => {
 
 
     let persons = null;
+    let btnClass = '';
 
     if (this.state.showPersons) {
       persons = (
@@ -66,7 +67,7 @@ togglePersonsHandler = () => {
           })}
        </div> 
       );
-     
+       btnClass = classes.Red;
     }
 
     const assignedClasses = [];
@@ -84,8 +85,9 @@ togglePersonsHandler = () => {
         <h1> Hi, im a new react app </h1>
         <p className={assignedClasses.join(' ')} > this is realy working</p>
         <button
-        onClick={this.togglePersonsHandler}>Switch Name</button>
-        {persons}
+          className={btnClass}
+          onClick={this.togglePersonsHandler}>Switch Name</button>
+          {persons}
         </div>
      
     );
