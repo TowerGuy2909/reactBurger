@@ -1,19 +1,55 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import classes from './App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit'
 
 
-class App extends Component {
-  state = {
-    persons: [
-      {id:'asfa1', name: 'Jerridd', age: 39},
-      {id:'vasdf1', name: 'Jill', age: 38},
-      {id:'asdf11', name: 'Donovan', age: 11},
-    ],
-    otherState: "some other value",
-    showPersons: false
+class App extends PureComponent {
+  constructor(props){
+    super(props);
+    console.log('[App.js] Inside the Constructor', props);
+    this.state = {
+      persons: [
+        {id:'asfa1', name: 'Jerridd', age: 39},
+        {id:'vasdf1', name: 'Jill', age: 38},
+        {id:'asdf11', name: 'Donovan', age: 11},
+      ],
+      otherState: "some other value",
+      showPersons: false
+    }
   }
+
+  componentWillMount() {
+    console.log('[App.js] Inside the componentWillMount');
+  }
+
+  componentDidMount(){
+    console.log('[App.js] Inside the componentDidMount');
+  }
+
+  // shouldComponentUpdate (nextProps, nextState) {
+  //   console.log('[UPDATE App.js] Inside shouldComponentUpdate', nextProps, nextState);
+  //   return nextState.persons !== this.state.persons ||
+  //   nextState.showPersons !== this.state.showPersons;
+  // }
+
+  componentWillUpdate (nextProps, nextState) {
+    console.log('[UPDATE App.js] Inside componentWillUpdate', nextProps, nextState);
+  }
+
+  componentDidUpdate (nextProps, nextState) {
+    console.log('[UPDATE App.js] Inside componentDidUpdate', nextProps, nextState);
+  }
+
+  // state = {
+  //   persons: [
+  //     {id:'asfa1', name: 'Jerridd', age: 39},
+  //     {id:'vasdf1', name: 'Jill', age: 38},
+  //     {id:'asdf11', name: 'Donovan', age: 11},
+  //   ],
+  //   otherState: "some other value",
+  //   showPersons: false
+  // }
 
   
 nameChangedHandler = (event, id) => {
@@ -50,8 +86,7 @@ togglePersonsHandler = () => {
 }
 
   render() {
-
-
+    console.log('[App.js] Inside render()')
     let persons = null;
 
     if (this.state.showPersons) {
@@ -64,6 +99,7 @@ togglePersonsHandler = () => {
     return (
      
         <div className={classes.App}>
+        <button onClick={() => {this.setState({showPersons: true})}}>Show Persons</button>
           <Cockpit 
             appTitle={this.props.title}
             showPersons={this.state.showPersons}
